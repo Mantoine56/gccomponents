@@ -1,0 +1,9 @@
+---
+description: Best practices for Angular applications
+globs: **/*.{ts}
+alwaysApply: false
+---
+- Use Angular's dependency injection for better modularity
+- Implement OnPush change detection strategy for performance
+- Use async pipe to manage subscriptions and prevent memory leaks
+- Utilize Angular's built-in form validation for robust user input handling

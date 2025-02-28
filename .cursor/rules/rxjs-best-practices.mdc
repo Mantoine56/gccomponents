@@ -1,0 +1,9 @@
+---
+description: Best practices for reactive programming with RxJS
+globs: **/*.{ts}
+alwaysApply: false
+---
+- Use pipeable operators for better readability and performance
+- Implement proper error handling with catchError operator
+- Use shareReplay for multicasting observables
+- Avoid nested subscriptions; use higher-order mapping operators instead

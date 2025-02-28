@@ -1,0 +1,8 @@
+---
+description: Best practices for using Zone.js in Angular applications
+globs: **/*.{ts}
+alwaysApply: false
+---
+- Use runOutsideAngular to prevent unnecessary change detection cycles
+- Implement Zone.js patches judiciously to avoid performance overhead
+- Use NgZone to manually control change detection when needed

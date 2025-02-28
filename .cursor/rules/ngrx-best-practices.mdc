@@ -1,0 +1,9 @@
+---
+description: Best practices for state management with NgRx
+globs: **/*.{ts}
+alwaysApply: false
+---
+- Use feature stores to organize state by domain
+- Implement effects for side effects and asynchronous operations
+- Use @ngrx/entity for efficient management of collections
+- Leverage @ngrx/router-store for seamless integration with Angular Router
