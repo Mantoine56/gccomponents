@@ -1,0 +1,674 @@
+<gcds-container>
+  <!-- Page Header -->
+  <section class="page-header">
+    <gcds-breadcrumbs>
+      <gcds-breadcrumb href="/">Home</gcds-breadcrumb>
+      <gcds-breadcrumb>GCDS Component Library</gcds-breadcrumb>
+    </gcds-breadcrumbs>
+    
+    <gcds-heading tag="h1">{{ title }}</gcds-heading>
+    <gcds-text>This page demonstrates all the Government of Canada Design System components available in the application. Use this as a reference for implementing GCDS components in your code.</gcds-text>
+  </section>
+  
+  <!-- Table of Contents -->
+  <section class="toc" id="table-of-contents">
+    <gcds-heading tag="h2">Component Categories</gcds-heading>
+    <div class="category-grid">
+      <div class="category-item" *ngFor="let category of categories">
+        <a class="category-link" 
+           (click)="scrollToSection(category.id, $event)" 
+           (keyup)="onCategoryKeyup($event, category.id)"
+           [attr.title]="'Go to ' + category.name + ' section'" 
+           role="button"
+           tabindex="0">
+          <div class="category-card">
+            <h3 class="category-title">{{ category.name }}</h3>
+            <p class="category-description">{{ category.description }}</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Typography Section -->
+  <section class="component-section" id="typography">
+    <gcds-heading tag="h2">Typography</gcds-heading>
+    
+    <!-- Heading Component -->
+    <div class="component-demo">
+      <gcds-heading tag="h3">Heading Component</gcds-heading>
+      <div class="demo-container">
+        <div class="demo-example">
+          <gcds-heading tag="h1">H1 Heading</gcds-heading>
+          <gcds-heading tag="h2">H2 Heading</gcds-heading>
+          <gcds-heading tag="h3">H3 Heading</gcds-heading>
+          <gcds-heading tag="h4">H4 Heading</gcds-heading>
+          <gcds-heading tag="h5">H5 Heading</gcds-heading>
+          <gcds-heading tag="h6">H6 Heading</gcds-heading>
+        </div>
+        <div class="demo-code" id="heading-code">
+          <details class="code-details">
+            <summary>View Code</summary>
+            <pre><code>&lt;gcds-heading tag="h1"&gt;H1 Heading&lt;/gcds-heading&gt;
+&lt;gcds-heading tag="h2"&gt;H2 Heading&lt;/gcds-heading&gt;
+&lt;gcds-heading tag="h3"&gt;H3 Heading&lt;/gcds-heading&gt;
+&lt;gcds-heading tag="h4"&gt;H4 Heading&lt;/gcds-heading&gt;
+&lt;gcds-heading tag="h5"&gt;H5 Heading&lt;/gcds-heading&gt;
+&lt;gcds-heading tag="h6"&gt;H6 Heading&lt;/gcds-heading&gt;</code></pre>
+          </details>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Text Component -->
+    <div class="component-demo">
+      <gcds-heading tag="h3">Text Component</gcds-heading>
+      <div class="demo-container">
+        <div class="demo-example">
+          <gcds-text size="xl">Extra Large Text</gcds-text>
+          <gcds-text size="lg">Large Text</gcds-text>
+          <gcds-text>Regular Text</gcds-text>
+          <gcds-text size="sm">Small Text</gcds-text>
+        </div>
+        <div class="demo-code" id="text-code">
+          <details class="code-details">
+            <summary>View Code</summary>
+            <pre><code>&lt;gcds-text size="xl"&gt;Extra Large Text&lt;/gcds-text&gt;
+&lt;gcds-text size="lg"&gt;Large Text&lt;/gcds-text&gt;
+&lt;gcds-text&gt;Regular Text&lt;/gcds-text&gt;
+&lt;gcds-text size="sm"&gt;Small Text&lt;/gcds-text&gt;</code></pre>
+          </details>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Link Component -->
+    <div class="component-demo">
+      <gcds-heading tag="h3">Link Component</gcds-heading>
+      <div class="demo-container">
+        <div class="demo-example">
+          <gcds-link href="#">Regular Link</gcds-link>
+          <br>
+          <gcds-link href="#" external>External Link</gcds-link>
+        </div>
+        <div class="demo-code" id="link-code">
+          <details class="code-details">
+            <summary>View Code</summary>
+            <pre><code>&lt;gcds-link href="#"&gt;Regular Link&lt;/gcds-link&gt;
+&lt;gcds-link href="#" external&gt;External Link&lt;/gcds-link&gt;</code></pre>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Form Controls Section -->
+  <section class="component-section" id="form-controls">
+    <gcds-heading tag="h2">Form Controls</gcds-heading>
+    
+    <!-- Button Component -->
+    <div class="component-demo">
+      <gcds-heading tag="h3">Button Component</gcds-heading>
+      <div class="demo-container">
+        <div class="demo-example">
+          <gcds-button button-role="primary">Primary Button</gcds-button>
+          <gcds-button button-role="secondary">Secondary Button</gcds-button>
+          <gcds-button button-role="danger">Danger Button</gcds-button>
+          <gcds-button button-role="text">Text Button</gcds-button>
+        </div>
+        <div class="demo-code" id="button-code">
+          <details class="code-details">
+            <summary>View Code</summary>
+            <pre><code>&lt;gcds-button button-role="primary"&gt;Primary Button&lt;/gcds-button&gt;
+&lt;gcds-button button-role="secondary"&gt;Secondary Button&lt;/gcds-button&gt;
+&lt;gcds-button button-role="danger"&gt;Danger Button&lt;/gcds-button&gt;
+&lt;gcds-button button-role="text"&gt;Text Button&lt;/gcds-button&gt;</code></pre>
+          </details>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Input Component -->
+    <div class="component-demo">
+      <gcds-heading tag="h3">Input Component</gcds-heading>
+      <div class="demo-container">
+        <div class="demo-example">
+          <gcds-input label="Regular Input" hint="Enter text here"></gcds-input>
+          <gcds-input label="Required Input" required></gcds-input>
+          <gcds-input label="Disabled Input" disabled></gcds-input>
+          <gcds-input label="Input with Error" error-message="This field has an error"></gcds-input>
+        </div>
+        <div class="demo-code" id="input-code">
+          <details class="code-details">
+            <summary>View Code</summary>
+            <pre><code>&lt;gcds-input label="Regular Input" hint="Enter text here"&gt;&lt;/gcds-input&gt;
+&lt;gcds-input label="Required Input" required&gt;&lt;/gcds-input&gt;
+&lt;gcds-input label="Disabled Input" disabled&gt;&lt;/gcds-input&gt;
+&lt;gcds-input label="Input with Error" error-message="This field has an error"&gt;&lt;/gcds-input&gt;</code></pre>
+          </details>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Checkbox Component -->
+    <div class="component-demo">
+      <gcds-heading tag="h3">Checkbox Component</gcds-heading>
+      <div class="demo-container">
+        <div class="demo-example">
+          <gcds-checkbox name="checkbox1" checkbox-id="checkbox1">Regular checkbox</gcds-checkbox>
+          <gcds-checkbox name="checkbox2" checkbox-id="checkbox2" required>Required checkbox</gcds-checkbox>
+          <gcds-checkbox name="checkbox3" checkbox-id="checkbox3" disabled>Disabled checkbox</gcds-checkbox>
+        </div>
+        <div class="demo-code" id="checkbox-code">
+          <details class="code-details">
+            <summary>View Code</summary>
+            <pre><code>&lt;gcds-checkbox name="checkbox1" checkbox-id="checkbox1"&gt;Regular checkbox&lt;/gcds-checkbox&gt;
+&lt;gcds-checkbox name="checkbox2" checkbox-id="checkbox2" required&gt;Required checkbox&lt;/gcds-checkbox&gt;
+&lt;gcds-checkbox name="checkbox3" checkbox-id="checkbox3" disabled&gt;Disabled checkbox&lt;/gcds-checkbox&gt;</code></pre>
+          </details>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Radio Component -->
+    <div class="component-demo">
+      <gcds-heading tag="h3">Radio Component</gcds-heading>
+      <div class="demo-container">
+        <div class="demo-example">
+          <!-- Original GCDS implementation -->
+          <gcds-radio-group name="demo-radio-group" legend="Radio Group Example" fieldset-hint="Select one option">
+            <gcds-radio radio-id="radio-option1" value="option1" name="demo-radio-group">Option 1</gcds-radio>
+            <gcds-radio radio-id="radio-option2" value="option2" name="demo-radio-group">Option 2</gcds-radio>
+            <gcds-radio radio-id="radio-option3" value="option3" name="demo-radio-group" disabled>Option 3 (Disabled)</gcds-radio>
+          </gcds-radio-group>
+
+          <!-- Simple fallback that only shows when GCDS radio components fail -->
+          <div class="radio-fallback">
+            <fieldset>
+              <legend>Radio Group Example</legend>
+              <div class="fieldset-hint">Select one option</div>
+              <div class="radio-options">
+                <div class="radio-option">
+                  <input type="radio" id="fallback-radio-option1" name="fallback-demo-radio-group" value="option1">
+                  <label for="fallback-radio-option1">Option 1</label>
+                </div>
+                <div class="radio-option">
+                  <input type="radio" id="fallback-radio-option2" name="fallback-demo-radio-group" value="option2">
+                  <label for="fallback-radio-option2">Option 2</label>
+                </div>
+                <div class="radio-option">
+                  <input type="radio" id="fallback-radio-option3" name="fallback-demo-radio-group" value="option3" disabled>
+                  <label for="fallback-radio-option3">Option 3 (Disabled)</label>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+        <div class="demo-code" id="radio-code">
+          <details class="code-details">
+            <summary>View Code</summary>
+            <pre><code>&lt;gcds-radio-group name="demo-radio-group" legend="Radio Group Example" fieldset-hint="Select one option"&gt;
+  &lt;gcds-radio radio-id="radio-option1" value="option1" name="demo-radio-group"&gt;Option 1&lt;/gcds-radio&gt;
+  &lt;gcds-radio radio-id="radio-option2" value="option2" name="demo-radio-group"&gt;Option 2&lt;/gcds-radio&gt;
+  &lt;gcds-radio radio-id="radio-option3" value="option3" name="demo-radio-group" disabled&gt;Option 3 (Disabled)&lt;/gcds-radio&gt;
+&lt;/gcds-radio-group&gt;</code></pre>
+          </details>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Select Component -->
+    <div class="component-demo">
+      <gcds-heading tag="h3">Select Component</gcds-heading>
+      <div class="demo-container">
+        <div class="demo-example">
+          <gcds-select label="Select option" name="select">
+            <option value="option1">Option 1</option>
+            <option value="option2">Option 2</option>
+            <option value="option3">Option 3</option>
+          </gcds-select>
+        </div>
+        <div class="demo-code" id="select-code">
+          <details class="code-details">
+            <summary>View Code</summary>
+            <pre><code>&lt;gcds-select label="Select option" name="select"&gt;
+  &lt;option value="option1"&gt;Option 1&lt;/option&gt;
+  &lt;option value="option2"&gt;Option 2&lt;/option&gt;
+  &lt;option value="option3"&gt;Option 3&lt;/option&gt;
+&lt;/gcds-select&gt;</code></pre>
+          </details>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Textarea Component -->
+    <div class="component-demo">
+      <gcds-heading tag="h3">Textarea Component</gcds-heading>
+      <div class="demo-container">
+        <div class="demo-example">
+          <gcds-textarea label="Comments" hint="Enter your comments here"></gcds-textarea>
+        </div>
+        <div class="demo-code" id="textarea-code">
+          <details class="code-details">
+            <summary>View Code</summary>
+            <pre><code>&lt;gcds-textarea label="Comments" hint="Enter your comments here"&gt;&lt;/gcds-textarea&gt;</code></pre>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Navigation Section -->
+  <section class="component-section" id="navigation">
+    <gcds-heading tag="h2">Navigation</gcds-heading>
+    
+    <!-- Breadcrumbs Component -->
+    <div class="component-demo">
+      <gcds-heading tag="h3">Breadcrumbs Component</gcds-heading>
+      <div class="demo-container">
+        <div class="demo-example">
+          <gcds-breadcrumbs>
+            <gcds-breadcrumb href="/">Home</gcds-breadcrumb>
+            <gcds-breadcrumb href="/canada">Canada Page</gcds-breadcrumb>
+            <gcds-breadcrumb>Current Page</gcds-breadcrumb>
+          </gcds-breadcrumbs>
+        </div>
+        <div class="demo-code" id="breadcrumbs-code">
+          <details class="code-details">
+            <summary>View Code</summary>
+            <pre><code>&lt;gcds-breadcrumbs&gt;
+  &lt;gcds-breadcrumb href="/"&gt;Home&lt;/gcds-breadcrumb&gt;
+  &lt;gcds-breadcrumb href="/canada"&gt;Canada Page&lt;/gcds-breadcrumb&gt;
+  &lt;gcds-breadcrumb&gt;Current Page&lt;/gcds-breadcrumb&gt;
+&lt;/gcds-breadcrumbs&gt;</code></pre>
+          </details>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Nav Component -->
+    <div class="component-demo">
+      <gcds-heading tag="h3">Nav Component</gcds-heading>
+      <div class="demo-container">
+        <div class="demo-example">
+          <gcds-nav>
+            <gcds-nav-link href="/">Home</gcds-nav-link>
+            <gcds-nav-link href="/canada">Canada Page</gcds-nav-link>
+            <gcds-nav-link href="/questionnaire">Questionnaire</gcds-nav-link>
+            <gcds-nav-link href="/gcds-demo" active>GCDS Demo</gcds-nav-link>
+          </gcds-nav>
+        </div>
+        <div class="demo-code" id="nav-code">
+          <details class="code-details">
+            <summary>View Code</summary>
+            <pre><code>&lt;gcds-nav&gt;
+  &lt;gcds-nav-link href="/"&gt;Home&lt;/gcds-nav-link&gt;
+  &lt;gcds-nav-link href="/canada"&gt;Canada Page&lt;/gcds-nav-link&gt;
+  &lt;gcds-nav-link href="/questionnaire"&gt;Questionnaire&lt;/gcds-nav-link&gt;
+  &lt;gcds-nav-link href="/gcds-demo" active&gt;GCDS Demo&lt;/gcds-nav-link&gt;
+&lt;/gcds-nav&gt;</code></pre>
+          </details>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Pagination Component -->
+    <div class="component-demo">
+      <gcds-heading tag="h3">Pagination Component</gcds-heading>
+      <div class="demo-container">
+        <div class="demo-example">
+          <gcds-pagination pages="5" current="3"></gcds-pagination>
+        </div>
+        <div class="demo-code" id="pagination-code">
+          <details class="code-details">
+            <summary>View Code</summary>
+            <pre><code>&lt;gcds-pagination pages="5" current="3"&gt;&lt;/gcds-pagination&gt;</code></pre>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Layout Section -->
+  <section class="component-section" id="layout">
+    <gcds-heading tag="h2">Layout</gcds-heading>
+    
+    <!-- Container Component -->
+    <div class="component-demo">
+      <gcds-heading tag="h3">Container Component</gcds-heading>
+      <div class="demo-container">
+        <div class="demo-example">
+          <gcds-container size="full" padding="400" centered>
+            <div class="container-demo">Full-width Container with Padding</div>
+          </gcds-container>
+          <br>
+          <gcds-container size="lg" centered>
+            <div class="container-demo">Large Container</div>
+          </gcds-container>
+        </div>
+        <div class="demo-code" id="container-code">
+          <details class="code-details">
+            <summary>View Code</summary>
+            <pre><code>&lt;gcds-container size="full" padding="400" centered&gt;
+  &lt;div class="container-demo"&gt;Full-width Container with Padding&lt;/div&gt;
+&lt;/gcds-container&gt;
+
+&lt;gcds-container size="lg" centered&gt;
+  &lt;div class="container-demo"&gt;Large Container&lt;/div&gt;
+&lt;/gcds-container&gt;</code></pre>
+          </details>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Grid Component -->
+    <div class="component-demo">
+      <gcds-heading tag="h3">Grid Component</gcds-heading>
+      <div class="demo-container">
+        <div class="demo-example">
+          <gcds-grid columns="1fr 1fr 1fr" tablet-columns="1fr 1fr" mobile-columns="1fr" gap="500">
+            <gcds-grid-cell>
+              <div class="grid-demo">Column 1</div>
+            </gcds-grid-cell>
+            <gcds-grid-cell>
+              <div class="grid-demo">Column 2</div>
+            </gcds-grid-cell>
+            <gcds-grid-cell>
+              <div class="grid-demo">Column 3</div>
+            </gcds-grid-cell>
+          </gcds-grid>
+        </div>
+        <div class="demo-code" id="grid-code">
+          <details class="code-details">
+            <summary>View Code</summary>
+            <pre><code>&lt;gcds-grid columns="1fr 1fr 1fr" tablet-columns="1fr 1fr" mobile-columns="1fr" gap="500"&gt;
+  &lt;gcds-grid-cell&gt;
+    &lt;div class="grid-demo"&gt;Column 1&lt;/div&gt;
+  &lt;/gcds-grid-cell&gt;
+  &lt;gcds-grid-cell&gt;
+    &lt;div class="grid-demo"&gt;Column 2&lt;/div&gt;
+  &lt;/gcds-grid-cell&gt;
+  &lt;gcds-grid-cell&gt;
+    &lt;div class="grid-demo"&gt;Column 3&lt;/div&gt;
+  &lt;/gcds-grid-cell&gt;
+&lt;/gcds-grid&gt;</code></pre>
+          </details>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Card Component -->
+    <div class="component-demo">
+      <gcds-heading tag="h3">Card Component</gcds-heading>
+      <div class="demo-container">
+        <div class="demo-example">
+          <!-- Basic Card with title attribute and href -->
+          <gcds-card card-title="Card with Title Attribute" href="https://example.com" class="demo-card">
+            <gcds-card-content>
+              <p>This is a basic card with a title attribute and href. The card component is used to group related content and actions.</p>
+              <gcds-button>Learn more</gcds-button>
+            </gcds-card-content>
+          </gcds-card>
+          
+          <!-- Card with header, content and footer components and href -->
+          <gcds-card href="https://example.com" card-title="Card with Header Component" class="demo-card">
+            <gcds-card-header>Card with Header Component</gcds-card-header>
+            <gcds-card-content>
+              <p>This card uses separate header, content and footer components for more complex layouts.</p>
+            </gcds-card-content>
+            <gcds-card-footer>
+              <gcds-button button-role="primary">Primary action</gcds-button>
+              <gcds-button button-role="secondary">Secondary action</gcds-button>
+            </gcds-card-footer>
+          </gcds-card>
+        </div>
+        <div class="demo-code" id="card-code">
+          <details class="code-details">
+            <summary>View Code</summary>
+            <pre><code>&lt;!-- Basic Card with title attribute and href --&gt;
+&lt;gcds-card card-title="Card with Title Attribute" href="https://example.com"&gt;
+  &lt;gcds-card-content&gt;
+    &lt;p&gt;This is a basic card with a title attribute and href. The card component is used to group related content and actions.&lt;/p&gt;
+    &lt;gcds-button&gt;Learn more&lt;/gcds-button&gt;
+  &lt;/gcds-card-content&gt;
+&lt;/gcds-card&gt;
+
+&lt;!-- Card with header, content and footer components and href --&gt;
+&lt;gcds-card href="https://example.com" card-title="Card with Header Component"&gt;
+  &lt;gcds-card-header&gt;Card with Header Component&lt;/gcds-card-header&gt;
+  &lt;gcds-card-content&gt;
+    &lt;p&gt;This card uses separate header, content and footer components for more complex layouts.&lt;/p&gt;
+  &lt;/gcds-card-content&gt;
+  &lt;gcds-card-footer&gt;
+    &lt;gcds-button button-role="primary"&gt;Primary action&lt;/gcds-button&gt;
+    &lt;gcds-button button-role="secondary"&gt;Secondary action&lt;/gcds-button&gt;
+  &lt;/gcds-card-footer&gt;
+&lt;/gcds-card&gt;</code></pre>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Feedback Section -->
+  <section class="component-section" id="feedback">
+    <gcds-heading tag="h2">Feedback</gcds-heading>
+    
+    <!-- Alert Component -->
+    <div class="component-demo">
+      <gcds-heading tag="h3">Alert Component</gcds-heading>
+      <div class="demo-container">
+        <div class="demo-example">
+          <gcds-alert alert-role="info">This is an information alert.</gcds-alert>
+          <gcds-alert alert-role="success">This is a success alert.</gcds-alert>
+          <gcds-alert alert-role="warning">This is a warning alert.</gcds-alert>
+          <gcds-alert alert-role="danger">This is a danger alert.</gcds-alert>
+        </div>
+        <div class="demo-code" id="alert-code">
+          <details class="code-details">
+            <summary>View Code</summary>
+            <pre><code>&lt;gcds-alert alert-role="info"&gt;This is an information alert.&lt;/gcds-alert&gt;
+&lt;gcds-alert alert-role="success"&gt;This is a success alert.&lt;/gcds-alert&gt;
+&lt;gcds-alert alert-role="warning"&gt;This is a warning alert.&lt;/gcds-alert&gt;
+&lt;gcds-alert alert-role="danger"&gt;This is a danger alert.&lt;/gcds-alert&gt;</code></pre>
+          </details>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Error-Message Component -->
+    <div class="component-demo">
+      <gcds-heading tag="h3">Error Message Component</gcds-heading>
+      <div class="demo-container">
+        <div class="demo-example">
+          <gcds-error-message>This field is required.</gcds-error-message>
+        </div>
+        <div class="demo-code" id="error-message-code">
+          <details class="code-details">
+            <summary>View Code</summary>
+            <pre><code>&lt;gcds-error-message&gt;This field is required.&lt;/gcds-error-message&gt;</code></pre>
+          </details>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Error-Summary Component -->
+    <div class="component-demo">
+      <gcds-heading tag="h3">Error Summary Component</gcds-heading>
+      <div class="demo-container">
+        <div class="demo-example">
+          <gcds-error-summary heading="Form errors" error-heading-id="form-errors">
+            <gcds-error-link href="#field1" text="Field 1 is required"></gcds-error-link>
+            <gcds-error-link href="#field2" text="Field 2 has invalid format"></gcds-error-link>
+          </gcds-error-summary>
+          
+          <!-- Demo form fields for the error links to reference -->
+          <gcds-input id="field1" label="Required Field" error-message="This field is required" has-error></gcds-input>
+          <gcds-input id="field2" label="Email Field" value="invalid-email" error-message="Invalid email format" has-error></gcds-input>
+        </div>
+        <div class="demo-code" id="error-summary-code">
+          <details class="code-details">
+            <summary>View Code</summary>
+            <pre><code>&lt;gcds-error-summary heading="Form errors" error-heading-id="form-errors"&gt;
+  &lt;gcds-error-link href="#field1" text="Field 1 is required"&gt;&lt;/gcds-error-link&gt;
+  &lt;gcds-error-link href="#field2" text="Field 2 has invalid format"&gt;&lt;/gcds-error-link&gt;
+&lt;/gcds-error-summary&gt;
+
+&lt;!-- Form fields with errors --&gt;
+&lt;gcds-input id="field1" label="Required Field" error-message="This field is required" has-error&gt;&lt;/gcds-input&gt;
+&lt;gcds-input id="field2" label="Email Field" value="invalid-email" error-message="Invalid email format" has-error&gt;&lt;/gcds-input&gt;</code></pre>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Information Section -->
+  <section class="component-section" id="information">
+    <gcds-heading tag="h2">Information</gcds-heading>
+    
+    <!-- Details Component -->
+    <div class="component-demo">
+      <gcds-heading tag="h3">Details Component</gcds-heading>
+      <div class="demo-container">
+        <div class="demo-example">
+          <details>
+            <summary>Show more information</summary>
+            <gcds-text>This content is hidden until the user clicks to expand it.</gcds-text>
+          </details>
+        </div>
+        <div class="demo-code" id="details-code">
+          <details class="code-details">
+            <summary>View Code</summary>
+            <pre><code>&lt;gcds-details summary="Show more information"&gt;
+    &lt;gcds-text&gt;This content is hidden until the user clicks to expand it.&lt;/gcds-text&gt;
+  &lt;/gcds-details&gt;</code></pre>
+          </details>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Icon Component -->
+    <div class="component-demo">
+      <gcds-heading tag="h3">Icon Component</gcds-heading>
+      <div class="demo-container">
+        <div class="demo-example">
+          <div class="icon-demo-container">
+            <div class="icon-item">
+              <gcds-icon name="alert-circle" size="lg"></gcds-icon>
+              <span>alert-circle</span>
+            </div>
+            <div class="icon-item">
+              <gcds-icon name="arrow-down" size="lg"></gcds-icon>
+              <span>arrow-down</span>
+            </div>
+            <div class="icon-item">
+              <gcds-icon name="check-circle" size="lg"></gcds-icon>
+              <span>check-circle</span>
+            </div>
+            <div class="icon-item">
+              <gcds-icon name="download" size="lg"></gcds-icon>
+              <span>download</span>
+            </div>
+            <div class="icon-item">
+              <gcds-icon name="external-link" size="lg"></gcds-icon>
+              <span>external-link</span>
+            </div>
+          </div>
+          
+          <gcds-text>Icon sizes:</gcds-text>
+          <div class="icon-sizes">
+            <div class="icon-item">
+              <gcds-icon name="info" size="sm"></gcds-icon>
+              <span>Small</span>
+            </div>
+            <div class="icon-item">
+              <gcds-icon name="info" size="md"></gcds-icon>
+              <span>Medium</span>
+            </div>
+            <div class="icon-item">
+              <gcds-icon name="info" size="lg"></gcds-icon>
+              <span>Large</span>
+            </div>
+          </div>
+        </div>
+        <div class="demo-code" id="icon-code">
+          <details class="code-details">
+            <summary>View Code</summary>
+            <pre><code>&lt;!-- Icon examples --&gt;
+&lt;gcds-icon name="alert-circle" size="lg"&gt;&lt;/gcds-icon&gt;
+&lt;gcds-icon name="arrow-down" size="lg"&gt;&lt;/gcds-icon&gt;
+&lt;gcds-icon name="check-circle" size="lg"&gt;&lt;/gcds-icon&gt;
+&lt;gcds-icon name="download" size="lg"&gt;&lt;/gcds-icon&gt;
+&lt;gcds-icon name="external-link" size="lg"&gt;&lt;/gcds-icon&gt;
+
+&lt;!-- Icon sizes --&gt;
+&lt;gcds-icon name="info" size="sm"&gt;&lt;/gcds-icon&gt; &lt;!-- Small --&gt;
+&lt;gcds-icon name="info" size="md"&gt;&lt;/gcds-icon&gt; &lt;!-- Medium --&gt;
+&lt;gcds-icon name="info" size="lg"&gt;&lt;/gcds-icon&gt; &lt;!-- Large --&gt;</code></pre>
+          </details>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Phase-Banner Component -->
+    <div class="component-demo">
+      <gcds-heading tag="h3">Phase Banner Component</gcds-heading>
+      <div class="demo-container">
+        <div class="demo-example">
+          <div class="phase-banner-examples">
+            <!-- Alpha Banner -->
+            <div class="phase-banner-item">
+              <gcds-text>Alpha Banner:</gcds-text>
+              <gcds-phase-banner phase="alpha" feedback-link="https://example.com/feedback">
+                This is a new service. Your <gcds-link href="https://example.com">feedback</gcds-link> will help us improve it.
+              </gcds-phase-banner>
+            </div>
+            
+            <!-- Beta Banner -->
+            <div class="phase-banner-item">
+              <gcds-text>Beta Banner:</gcds-text>
+              <gcds-phase-banner phase="beta" feedback-link="https://example.com/feedback">
+                This service is in beta. Your <gcds-link href="https://example.com">feedback</gcds-link> will help us improve it.
+              </gcds-phase-banner>
+            </div>
+            
+            <!-- Custom Phase Banner -->
+            <div class="phase-banner-item">
+              <gcds-text>Custom Phase Banner:</gcds-text>
+              <gcds-phase-banner custom-phase="Prototype" feedback-link="https://example.com/feedback">
+                This is a prototype. Your <gcds-link href="https://example.com">feedback</gcds-link> is valuable to our development.
+              </gcds-phase-banner>
+            </div>
+          </div>
+        </div>
+        <div class="demo-code" id="phase-banner-code">
+          <details class="code-details">
+            <summary>View Code</summary>
+            <pre><code>&lt;!-- Alpha Banner --&gt;
+&lt;gcds-phase-banner phase="alpha" feedback-link="https://example.com/feedback"&gt;
+  This is a new service. Your &lt;gcds-link href="https://example.com"&gt;feedback&lt;/gcds-link&gt; will help us improve it.
+&lt;/gcds-phase-banner&gt;
+
+&lt;!-- Beta Banner --&gt;
+&lt;gcds-phase-banner phase="beta" feedback-link="https://example.com/feedback"&gt;
+  This service is in beta. Your &lt;gcds-link href="https://example.com"&gt;feedback&lt;/gcds-link&gt; will help us improve it.
+&lt;/gcds-phase-banner&gt;
+
+&lt;!-- Custom Phase Banner --&gt;
+&lt;gcds-phase-banner custom-phase="Prototype" feedback-link="https://example.com/feedback"&gt;
+  This is a prototype. Your &lt;gcds-link href="https://example.com"&gt;feedback&lt;/gcds-link&gt; is valuable to our development.
+&lt;/gcds-phase-banner&gt;</code></pre>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Back to Top -->
+  <div class="back-to-top">
+    <gcds-button button-role="secondary" href="#table-of-contents" type="button">
+      <gcds-icon name="arrow-up" label="Back to top"></gcds-icon> Back to Top
+    </gcds-button>
+  </div>
+</gcds-container> 

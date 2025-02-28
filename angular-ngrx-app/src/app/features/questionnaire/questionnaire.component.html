@@ -1,0 +1,256 @@
+<div class="questionnaire-page">
+  <!-- Skip links -->
+  <gcds-skip-links>
+    <gcds-skip-link href="#main-content">Skip to main content</gcds-skip-link>
+    <gcds-skip-link href="#footer-links">Skip to footer</gcds-skip-link>
+  </gcds-skip-links>
+
+  <!-- Header -->
+  <gcds-header
+    lang-href="#"
+    skip-to-href="#main-content"
+    lang-code="en"
+    signature-variant="colour">
+    <gcds-search slot="search" action="#" placeholder="Search Canada.ca"></gcds-search>
+  </gcds-header>
+
+  <!-- Container for main content -->
+  <gcds-container>
+    <!-- Breadcrumbs -->
+    <gcds-breadcrumbs>
+      <gcds-breadcrumb href="https://www.canada.ca/en.html">Canada.ca</gcds-breadcrumb>
+      <gcds-breadcrumb routerLink="/canada">Angular NgRx Demo</gcds-breadcrumb>
+      <gcds-breadcrumb>Questionnaire</gcds-breadcrumb>
+    </gcds-breadcrumbs>
+
+    <!-- Main content -->
+    <main id="main-content">
+      <gcds-heading tag="h1">Interactive Questionnaire</gcds-heading>
+      
+      <!-- Progress indicator -->
+      <div class="progress-indicator">
+        <div class="progress-bar">
+          <div class="step" [class.active]="currentStep >= 1">1</div>
+          <div class="connector" [class.active]="currentStep >= 2"></div>
+          <div class="step" [class.active]="currentStep >= 2">2</div>
+          <div class="connector" [class.active]="currentStep >= 3"></div>
+          <div class="step" [class.active]="currentStep >= 3">3</div>
+          <div class="connector" [class.active]="currentStep >= 4"></div>
+          <div class="step" [class.active]="currentStep >= 4">4</div>
+        </div>
+      </div>
+      
+      <div class="step-info">
+        <p>Step {{ currentStep }} of {{ totalSteps }}: {{ getStepTitle() }}</p>
+      </div>
+      
+      <!-- Step 1: Personal Information -->
+      <section *ngIf="currentStep === 1" class="step-content">
+        <gcds-heading tag="h2">Personal Information</gcds-heading>
+        <gcds-text>
+          <p>Please provide your basic contact information. All fields are required.</p>
+        </gcds-text>
+        
+        <form [formGroup]="personalInfoForm" (ngSubmit)="next()">
+          <div class="form-group">
+            <gcds-label for="firstName">First name</gcds-label>
+            <gcds-input 
+              id="firstName" 
+              formControlName="firstName" 
+              type="text" 
+              [required]="true"
+              [error-message]="errorMessages['firstName']">
+            </gcds-input>
+          </div>
+          
+          <div class="form-group">
+            <gcds-label for="lastName">Last name</gcds-label>
+            <gcds-input 
+              id="lastName" 
+              formControlName="lastName" 
+              type="text" 
+              [required]="true"
+              [error-message]="errorMessages['lastName']">
+            </gcds-input>
+          </div>
+          
+          <div class="form-group">
+            <gcds-label for="email">Email address</gcds-label>
+            <gcds-input 
+              id="email" 
+              formControlName="email" 
+              type="email" 
+              [required]="true"
+              [error-message]="errorMessages['email']">
+            </gcds-input>
+          </div>
+          
+          <div class="button-group">
+            <gcds-button type="button" button-role="secondary" (click)="goToCanadaPage()">Cancel</gcds-button>
+            <gcds-button type="submit" button-role="primary">Continue</gcds-button>
+          </div>
+        </form>
+      </section>
+      
+      <!-- Step 2: Preferences -->
+      <section *ngIf="currentStep === 2" class="step-content">
+        <gcds-heading tag="h2">Preferences</gcds-heading>
+        <gcds-text>
+          <p>Please tell us your preferences for communication and services.</p>
+        </gcds-text>
+        
+        <form [formGroup]="preferencesForm" (ngSubmit)="next()">
+          <div class="form-group">
+            <gcds-fieldset legend="Preferred language">
+              <gcds-radio-group formControlName="preferredLanguage">
+                <gcds-radio value="English" checked>English</gcds-radio>
+                <gcds-radio value="French">French</gcds-radio>
+                <gcds-radio value="Both">Both English and French</gcds-radio>
+              </gcds-radio-group>
+            </gcds-fieldset>
+          </div>
+          
+          <div class="form-group">
+            <gcds-fieldset legend="Notification preference">
+              <gcds-radio-group formControlName="notificationPreference">
+                <gcds-radio value="email" checked>Email</gcds-radio>
+                <gcds-radio value="phone">Phone</gcds-radio>
+                <gcds-radio value="mail">Mail</gcds-radio>
+                <gcds-radio value="none">No notifications</gcds-radio>
+              </gcds-radio-group>
+            </gcds-fieldset>
+          </div>
+          
+          <div class="button-group">
+            <gcds-button type="button" button-role="secondary" (click)="previous()">Previous</gcds-button>
+            <gcds-button type="submit" button-role="primary">Continue</gcds-button>
+          </div>
+        </form>
+      </section>
+      
+      <!-- Step 3: Feedback -->
+      <section *ngIf="currentStep === 3" class="step-content">
+        <gcds-heading tag="h2">Feedback</gcds-heading>
+        <gcds-text>
+          <p>We value your feedback. Please let us know how satisfied you are with our service.</p>
+        </gcds-text>
+        
+        <form [formGroup]="feedbackForm" (ngSubmit)="next()">
+          <div class="form-group">
+            <gcds-fieldset legend="How satisfied are you with our service?">
+              <gcds-radio-group formControlName="satisfaction">
+                <gcds-radio value="very_satisfied">Very satisfied</gcds-radio>
+                <gcds-radio value="satisfied">Satisfied</gcds-radio>
+                <gcds-radio value="neutral">Neutral</gcds-radio>
+                <gcds-radio value="dissatisfied">Dissatisfied</gcds-radio>
+                <gcds-radio value="very_dissatisfied">Very dissatisfied</gcds-radio>
+              </gcds-radio-group>
+              <gcds-error-message *ngIf="errorMessages['satisfaction']">
+                {{ errorMessages['satisfaction'] }}
+              </gcds-error-message>
+            </gcds-fieldset>
+          </div>
+          
+          <div class="form-group">
+            <gcds-label for="comments">Additional comments (optional)</gcds-label>
+            <gcds-textarea 
+              id="comments" 
+              formControlName="comments"
+              [error-message]="errorMessages['comments']">
+            </gcds-textarea>
+            <gcds-hint>Maximum 500 characters</gcds-hint>
+          </div>
+          
+          <div class="button-group">
+            <gcds-button type="button" button-role="secondary" (click)="previous()">Previous</gcds-button>
+            <gcds-button type="submit" button-role="primary">Continue</gcds-button>
+          </div>
+        </form>
+      </section>
+      
+      <!-- Step 4: Summary and Confirmation -->
+      <section *ngIf="currentStep === 4 && !completed" class="step-content">
+        <gcds-heading tag="h2">Review and Submit</gcds-heading>
+        <gcds-text>
+          <p>Please review your information before submitting.</p>
+        </gcds-text>
+        
+        <div class="summary-section">
+          <gcds-heading tag="h3">Personal Information</gcds-heading>
+          <dl class="summary-list">
+            <dt>First name:</dt>
+            <dd>{{ personalInfoForm.get('firstName')?.value }}</dd>
+            
+            <dt>Last name:</dt>
+            <dd>{{ personalInfoForm.get('lastName')?.value }}</dd>
+            
+            <dt>Email address:</dt>
+            <dd>{{ personalInfoForm.get('email')?.value }}</dd>
+          </dl>
+        </div>
+        
+        <div class="summary-section">
+          <gcds-heading tag="h3">Preferences</gcds-heading>
+          <dl class="summary-list">
+            <dt>Preferred language:</dt>
+            <dd>{{ preferencesForm.get('preferredLanguage')?.value }}</dd>
+            
+            <dt>Notification preference:</dt>
+            <dd>{{ preferencesForm.get('notificationPreference')?.value }}</dd>
+          </dl>
+        </div>
+        
+        <div class="summary-section">
+          <gcds-heading tag="h3">Feedback</gcds-heading>
+          <dl class="summary-list">
+            <dt>Satisfaction:</dt>
+            <dd>{{ getSatisfactionText(feedbackForm.get('satisfaction')?.value) }}</dd>
+            
+            <dt>Comments:</dt>
+            <dd>{{ feedbackForm.get('comments')?.value || 'None provided' }}</dd>
+          </dl>
+        </div>
+        
+        <div class="button-group">
+          <gcds-button type="button" button-role="secondary" (click)="previous()">Previous</gcds-button>
+          <gcds-button type="button" button-role="primary" (click)="submit()">Submit</gcds-button>
+        </div>
+      </section>
+      
+      <!-- Success Message -->
+      <section *ngIf="completed" class="step-content success-message">
+        <gcds-heading tag="h2">Thank You!</gcds-heading>
+        
+        <div class="success-icon">
+          <span aria-hidden="true">✓</span>
+        </div>
+        
+        <gcds-text>
+          <p>Your questionnaire has been successfully submitted.</p>
+          <p>We appreciate your time and feedback. Your responses will help us improve our services.</p>
+        </gcds-text>
+        
+        <div class="info-box">
+          <h3>What happens next?</h3>
+          <gcds-text>
+            <p>You will receive a confirmation email at {{ personalInfoForm.get('email')?.value }} shortly.</p>
+            <p>If you have any questions, please contact our support team.</p>
+          </gcds-text>
+        </div>
+        
+        <div class="button-group">
+          <gcds-button type="button" button-role="secondary" (click)="restart()">Start Over</gcds-button>
+          <gcds-button type="button" button-role="primary" routerLink="/canada">Return to Home</gcds-button>
+        </div>
+      </section>
+    </main>
+  </gcds-container>
+
+  <!-- Footer -->
+  <gcds-footer id="footer-links" 
+    lang-href="#" 
+    terms-href="https://www.canada.ca/en/transparency/terms.html" 
+    privacy-href="https://www.canada.ca/en/transparency/privacy.html" 
+    canada-href="https://www.canada.ca/en.html">
+  </gcds-footer>
+</div>

@@ -1,0 +1,57 @@
+<div class="todo-container">
+  <h1>NgRx Todo App</h1>
+  
+  <!-- Loading state -->
+  <div class="loading" *ngIf="loading$ | async">
+    <p>Loading todos...</p>
+  </div>
+  
+  <!-- Error state -->
+  <div class="error" *ngIf="error$ | async as error">
+    <p>Error: {{ error }}</p>
+  </div>
+  
+  <!-- Add todo form -->
+  <div class="add-todo">
+    <input 
+      type="text" 
+      [formControl]="todoInput" 
+      placeholder="Add a new todo..."
+      (keyup.enter)="addTodo()"
+    >
+    <button 
+      (click)="addTodo()" 
+      [disabled]="todoInput.invalid"
+    >
+      Add
+    </button>
+  </div>
+  
+  <!-- Validation message -->
+  <div class="validation-error" *ngIf="todoInput.invalid && todoInput.touched">
+    <p *ngIf="todoInput.errors?.['required']">Todo text is required</p>
+    <p *ngIf="todoInput.errors?.['minlength']">Todo text must be at least 3 characters</p>
+  </div>
+  
+  <!-- Todo list -->
+  <ul class="todo-list">
+    <li *ngFor="let todo of todos$ | async" [class.completed]="todo.completed">
+      <div class="todo-item">
+        <span class="todo-checkbox">
+          <input 
+            type="checkbox" 
+            [checked]="todo.completed" 
+            (change)="toggleTodo(todo.id)"
+          >
+        </span>
+        <span class="todo-text">{{ todo.text }}</span>
+        <button class="delete-btn" (click)="removeTodo(todo.id)">Delete</button>
+      </div>
+    </li>
+  </ul>
+  
+  <!-- Empty state -->
+  <div class="empty-state" *ngIf="(todos$ | async)?.length === 0 && !(loading$ | async)">
+    <p>No todos yet. Add your first todo above!</p>
+  </div>
+</div> 

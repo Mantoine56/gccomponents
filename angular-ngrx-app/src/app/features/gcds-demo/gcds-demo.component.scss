@@ -1,0 +1,773 @@
+/* 
+ * GCDS Demo Component Styles
+ * Provides styling for the GCDS component demonstration page
+ */
+
+/* Global container styles */
+gcds-container {
+  /* Ensure proper side padding on all screen sizes */
+  padding-left: var(--gcds-spacing-400);
+  padding-right: var(--gcds-spacing-400);
+  padding-top: var(--gcds-spacing-500);
+  padding-bottom: var(--gcds-spacing-800);
+  max-width: 100%;
+}
+
+.page-header {
+  margin-bottom: var(--gcds-spacing-800);
+  
+  gcds-breadcrumbs {
+    margin-bottom: var(--gcds-spacing-400);
+  }
+  
+  gcds-heading {
+    margin-bottom: var(--gcds-spacing-400);
+  }
+}
+
+/* Table of Contents */
+.toc {
+  margin-bottom: var(--gcds-spacing-600);
+  padding-left: var(--gcds-spacing-300);
+  padding-right: var(--gcds-spacing-300);
+  
+  .category-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--gcds-spacing-300);
+    width: 100%;
+    margin: 0 auto;
+    max-width: calc(100% - var(--gcds-spacing-400)); /* Ensure some padding on the sides */
+    
+    @media (max-width: 992px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      max-width: 100%;
+    }
+  }
+  
+  .category-item {
+    display: flex;
+  }
+  
+  .category-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    cursor: pointer;
+    width: 100%;
+    
+    &:hover .category-card {
+      /* Add shadow and border color change on hover */
+      box-shadow: var(--gcds-shadow-md);
+      border-color: var(--gcds-border-active);
+      background-color: var(--gcds-bg-gray-50);
+      transition: all 0.2s ease-in-out;
+    }
+    
+    &:focus {
+      outline: none; /* Remove default focus outline */
+      
+      .category-card {
+        /* GCDS focus state */
+        outline: 2px solid var(--gcds-focus-outline);
+        outline-offset: 2px;
+      }
+    }
+  }
+  
+  .category-card {
+    min-height: 90px;
+    transition: all 0.2s ease-in-out;
+    border: 1px solid var(--gcds-border-default);
+    border-radius: var(--gcds-border-radius-md);
+    padding: var(--gcds-spacing-300);
+    background-color: var(--gcds-bg-white);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    
+    /* Add a subtle indicator of clickability */
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: var(--gcds-spacing-200);
+      right: var(--gcds-spacing-200);
+      width: 8px;
+      height: 8px;
+      border-right: 2px solid var(--gcds-border-subtle);
+      border-bottom: 2px solid var(--gcds-border-subtle);
+      transform: rotate(-45deg);
+      opacity: 0.6;
+      transition: all 0.2s ease-in-out;
+    }
+    
+    &:hover::after {
+      /* Make arrow more visible on hover */
+      border-color: var(--gcds-border-active);
+      opacity: 1;
+      right: var(--gcds-spacing-100); /* Subtle movement on hover */
+    }
+    
+    .category-title {
+      font-size: 1.1rem;
+      margin-top: 0;
+      margin-bottom: var(--gcds-spacing-200);
+      color: var(--gcds-text-primary);
+      font-weight: bold;
+      border-bottom: 1px solid var(--gcds-border-subtle);
+      padding-bottom: var(--gcds-spacing-200);
+    }
+    
+    .category-description {
+      margin-top: 0;
+      margin-bottom: 0;
+      font-size: 0.9rem;
+      color: var(--gcds-text-secondary);
+    }
+  }
+}
+
+/* Component Sections */
+.component-section {
+  margin-bottom: var(--gcds-spacing-800);
+  padding-top: var(--gcds-spacing-500);
+  border-top: 1px solid var(--gcds-border-subtle);
+  
+  > gcds-heading {
+    margin-bottom: var(--gcds-spacing-600);
+  }
+}
+
+/* Component Demos */
+.component-demo {
+  margin-bottom: var(--gcds-spacing-800);
+  
+  gcds-heading {
+    margin-bottom: var(--gcds-spacing-400);
+  }
+}
+
+/* Demo Container */
+.demo-container {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--gcds-border-default);
+  border-radius: var(--gcds-border-radius-md);
+  overflow: hidden;
+  background-color: var(--gcds-bg-white);
+  box-shadow: var(--gcds-shadow-sm);
+  
+  .demo-example {
+    padding: var(--gcds-spacing-500);
+    background-color: var(--gcds-bg-white);
+    display: flex;
+    flex-direction: column;
+    gap: var(--gcds-spacing-400);
+  }
+  
+  .demo-code {
+    border-top: 1px solid var(--gcds-border-default);
+    
+    pre {
+      margin: 0;
+      padding: var(--gcds-spacing-400);
+      background-color: var(--gcds-bg-gray-50);
+      overflow-x: auto;
+      font-family: monospace;
+      font-size: 14px;
+      line-height: 1.5;
+      white-space: pre-wrap;
+    }
+  }
+}
+
+/* Make sure all details components work properly */
+gcds-details {
+  width: 100%;
+  display: block;
+}
+
+/* Radio and checkbox specific styling */
+gcds-radio-group {
+  display: block;
+  width: 100%;
+  margin-bottom: var(--gcds-spacing-400);
+  
+  /* Ensure the radio group has proper spacing */
+  min-height: 150px;
+  padding: var(--gcds-spacing-300);
+  border: 1px solid transparent;
+  
+  /* Force display if needed */
+  &:not(:defined) {
+    display: block;
+    border: 1px dashed var(--gcds-border-subtle);
+    padding: var(--gcds-spacing-400);
+    border-radius: var(--gcds-border-radius-sm);
+    margin-bottom: var(--gcds-spacing-400);
+  }
+}
+
+gcds-radio {
+  display: block;
+  margin-bottom: var(--gcds-spacing-300);
+  min-height: 24px;
+  
+  /* Force display if needed */
+  &:not(:defined) {
+    display: block;
+    padding-left: 24px;
+    position: relative;
+    
+    &::before {
+      content: "○";
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  }
+}
+
+gcds-checkbox {
+  display: block;
+  margin-bottom: var(--gcds-spacing-300);
+}
+
+/* Card specific styling with improved error handling */
+gcds-card {
+  display: block !important;
+  width: 100% !important;
+  margin-bottom: var(--gcds-spacing-500) !important;
+  min-height: 100px !important;
+  border: 1px solid var(--gcds-border-default) !important;
+  border-radius: var(--gcds-border-radius-md) !important;
+  box-shadow: var(--gcds-shadow-sm) !important;
+  padding: var(--gcds-spacing-400) !important;
+  background-color: white !important;
+  
+  /* Force display if needed */
+  &:not(:defined) {
+    display: block !important;
+    border: 1px solid var(--gcds-border-default) !important;
+    border-radius: var(--gcds-border-radius-md) !important;
+    padding: var(--gcds-spacing-400) !important;
+    background-color: white !important;
+    margin-bottom: var(--gcds-spacing-400) !important;
+  }
+  
+  /* Before content for cards with title but no rendered component */
+  &[card-title]:before {
+    content: attr(card-title);
+    display: block;
+    font-weight: bold;
+    font-size: 1.25rem;
+    margin-bottom: var(--gcds-spacing-400);
+    border-bottom: 1px solid var(--gcds-border-subtle);
+    padding-bottom: var(--gcds-spacing-300);
+  }
+  
+  /* Style card components */
+  gcds-card-header {
+    display: block !important;
+    font-weight: bold !important;
+    font-size: 1.25rem !important;
+    margin-bottom: var(--gcds-spacing-400) !important;
+    border-bottom: 1px solid var(--gcds-border-subtle) !important;
+    padding-bottom: var(--gcds-spacing-300) !important;
+    
+    &:not(:defined) {
+      display: block !important;
+      font-weight: bold !important;
+      font-size: 1.25rem !important;
+      margin-bottom: var(--gcds-spacing-400) !important;
+    }
+  }
+  
+  gcds-card-content {
+    display: block !important;
+    margin-bottom: var(--gcds-spacing-400) !important;
+    
+    &:not(:defined) {
+      display: block !important;
+      margin-bottom: var(--gcds-spacing-400) !important;
+    }
+  }
+  
+  gcds-card-footer {
+    display: block !important;
+    border-top: 1px solid var(--gcds-border-subtle) !important;
+    padding-top: var(--gcds-spacing-300) !important;
+    
+    &:not(:defined) {
+      display: block !important;
+      padding-top: var(--gcds-spacing-300) !important;
+    }
+  }
+  
+  /* Handle direct p elements */
+  > p {
+    margin-bottom: var(--gcds-spacing-400) !important;
+  }
+  
+  /* Handle direct button elements */
+  > gcds-button {
+    display: inline-block !important;
+    margin-right: var(--gcds-spacing-300) !important;
+  }
+}
+
+/* Demo card styles with additional fallbacks */
+.demo-card {
+  display: block !important;
+  width: 100% !important;
+  min-height: 150px !important;
+  border: 1px solid var(--gcds-border-default) !important;
+  border-radius: var(--gcds-border-radius-md) !important;
+  box-shadow: var(--gcds-shadow-sm) !important;
+  padding: var(--gcds-spacing-400) !important;
+  background-color: white !important;
+  margin-bottom: var(--gcds-spacing-500) !important;
+  
+  /* Before content for cards with title but no rendered component */
+  &[card-title]:before {
+    content: attr(card-title);
+    display: block;
+    font-weight: bold;
+    font-size: 1.25rem;
+    margin-bottom: var(--gcds-spacing-400);
+    border-bottom: 1px solid var(--gcds-border-subtle);
+    padding-bottom: var(--gcds-spacing-300);
+  }
+}
+
+/* Icon styling */
+.icon-demo-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gcds-spacing-400);
+  margin-bottom: var(--gcds-spacing-500);
+}
+
+.icon-sizes {
+  display: flex;
+  gap: var(--gcds-spacing-500);
+}
+
+.icon-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: var(--gcds-spacing-400);
+}
+
+.icon-item span {
+  margin-top: var(--gcds-spacing-200);
+  font-size: 14px;
+}
+
+/* Phase banner styling */
+.phase-banner-examples {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gcds-spacing-500);
+}
+
+.phase-banner-item {
+  border: 1px solid var(--gcds-border-subtle);
+  border-radius: var(--gcds-border-radius-sm);
+  padding: var(--gcds-spacing-300);
+}
+
+/* Visual demo elements */
+.container-demo, .grid-demo {
+  padding: var(--gcds-spacing-400);
+  background-color: var(--gcds-bg-gray-100);
+  border: 1px dashed var(--gcds-border-default);
+  border-radius: var(--gcds-border-radius-sm);
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Error summary specific styling */
+gcds-error-summary {
+  display: block;
+  width: 100%;
+}
+
+/* Form elements spacing */
+gcds-input, gcds-select, gcds-textarea {
+  display: block;
+  width: 100%;
+  margin-bottom: var(--gcds-spacing-400);
+}
+
+/* Button spacing */
+gcds-button {
+  margin-right: var(--gcds-spacing-300);
+  margin-bottom: var(--gcds-spacing-300);
+}
+
+/* Back to top button */
+.back-to-top {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--gcds-spacing-800);
+  margin-bottom: var(--gcds-spacing-400);
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+  gcds-container {
+    padding-left: var(--gcds-spacing-500);
+    padding-right: var(--gcds-spacing-500);
+  }
+  
+  .demo-container {
+    border-radius: var(--gcds-border-radius-lg);
+  }
+}
+
+/* Radio fallback styling - only for radio component fallback */
+.radio-fallback {
+  display: none; /* Hidden by default */
+  margin-bottom: var(--gcds-spacing-400);
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 16px;
+  
+  fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+    
+    legend {
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 0;
+      margin-bottom: 8px;
+    }
+    
+    .fieldset-hint {
+      color: #666;
+      font-size: 0.875rem;
+      margin-bottom: 16px;
+    }
+    
+    .radio-options {
+      .radio-option {
+        display: flex;
+        align-items: center;
+        margin-bottom: 12px;
+        
+        input[type="radio"] {
+          margin-right: 8px;
+          width: 18px;
+          height: 18px;
+        }
+        
+        label {
+          font-size: 1rem;
+        }
+        
+        input[disabled] + label {
+          color: #888;
+          opacity: 0.8;
+        }
+      }
+    }
+  }
+}
+
+/* Show the fallback only when the GCDS radio group is not defined or empty or has no height */
+gcds-radio-group:not(:defined) ~ .radio-fallback,
+gcds-radio-group:empty ~ .radio-fallback, 
+gcds-radio-group[style*="height: 0"] ~ .radio-fallback,
+gcds-radio-group[style*="display: none"] ~ .radio-fallback {
+  display: block; /* Show fallback when GCDS components aren't working */
+}
+
+/* Manual class to force fallbacks */
+.gcds-radio-fallback-active .radio-fallback {
+  display: block !important;
+}
+
+.gcds-radio-fallback-active gcds-radio-group {
+  display: none !important;
+}
+
+/* Enhance visibility for the View Code buttons */
+.demo-code gcds-details {
+  display: block;
+  width: 100%;
+  
+  /* Style the summary element (View Code button) */
+  ::part(summary) {
+    display: inline-block;
+    padding: var(--gcds-spacing-300) var(--gcds-spacing-400);
+    background-color: var(--gcds-bg-gray-100);
+    color: var(--gcds-text-primary);
+    font-weight: 500;
+    border-radius: var(--gcds-border-radius-sm);
+    cursor: pointer;
+    margin: var(--gcds-spacing-300);
+    position: relative;
+    border: 1px solid var(--gcds-border-default);
+    
+    /* Add a visual indicator */
+    &::after {
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-right: 2px solid currentColor;
+      border-bottom: 2px solid currentColor;
+      transform: rotate(45deg);
+      margin-left: var(--gcds-spacing-200);
+      transition: transform 0.2s ease;
+      vertical-align: middle;
+    }
+    
+    /* Flip the arrow when open */
+    &[aria-expanded="true"]::after {
+      transform: rotate(-135deg);
+    }
+    
+    /* Hover state */
+    &:hover {
+      background-color: var(--gcds-bg-gray-200);
+    }
+    
+    /* Focus state */
+    &:focus {
+      outline: 2px solid var(--gcds-focus-outline);
+      outline-offset: 2px;
+    }
+  }
+  
+  /* Fallback for when gcds-details' shadow parts are not accessible */
+  summary {
+    display: inline-block;
+    padding: var(--gcds-spacing-300) var(--gcds-spacing-400);
+    background-color: var(--gcds-bg-gray-100);
+    color: var(--gcds-text-primary);
+    font-weight: 500;
+    border-radius: var(--gcds-border-radius-sm);
+    cursor: pointer;
+    margin: var(--gcds-spacing-300);
+    position: relative;
+    border: 1px solid var(--gcds-border-default);
+    
+    &:hover {
+      background-color: var(--gcds-bg-gray-200);
+    }
+    
+    &:focus {
+      outline: 2px solid var(--gcds-focus-outline);
+      outline-offset: 2px;
+    }
+  }
+}
+
+/* Ensure summary is visible regardless of light/dark theme or component state */
+.demo-code details summary,
+.demo-code gcds-details summary {
+  display: inline-block;
+  padding: var(--gcds-spacing-300) var(--gcds-spacing-400);
+  background-color: var(--gcds-bg-gray-100);
+  color: var(--gcds-text-primary, #333);
+  font-weight: 500;
+  border-radius: var(--gcds-border-radius-sm);
+  cursor: pointer;
+  margin: var(--gcds-spacing-300);
+  border: 1px solid var(--gcds-border-default, #ccc);
+}
+
+/* Standard HTML details fallback for gcds-details */
+.demo-code details {
+  display: block;
+  width: 100%;
+  
+  summary {
+    list-style: none;
+    
+    &::marker,
+    &::-webkit-details-marker {
+      display: none;
+    }
+    
+    /* Add a visual indicator */
+    &::after {
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-right: 2px solid currentColor;
+      border-bottom: 2px solid currentColor;
+      transform: rotate(45deg);
+      margin-left: var(--gcds-spacing-200);
+      transition: transform 0.2s ease;
+      vertical-align: middle;
+    }
+    
+    /* Flip the arrow when open */
+    details[open] & {
+      &::after {
+        transform: rotate(-135deg);
+      }
+    }
+  }
+}
+
+/* Code details styling */
+.code-details {
+  width: 100%;
+  border: none;
+  margin-bottom: var(--gcds-spacing-400);
+  
+  summary {
+    display: inline-block;
+    cursor: pointer;
+    padding: var(--gcds-spacing-300) var(--gcds-spacing-400);
+    background-color: var(--gcds-button-secondary-default-background);
+    color: var(--gcds-button-secondary-default-text);
+    border: 1px solid var(--gcds-button-secondary-default-text);
+    border-radius: var(--gcds-border-radius-sm);
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.15s ease-in-out;
+    
+    &:hover {
+      background-color: var(--gcds-button-secondary-hover-background);
+    }
+    
+    &:focus {
+      outline: 2px solid var(--gcds-button-shared-focus-background);
+      outline-offset: 2px;
+    }
+  }
+  
+  pre {
+    margin-top: var(--gcds-spacing-400);
+    padding: var(--gcds-spacing-400);
+    background-color: var(--gcds-color-gray-50);
+    border-radius: var(--gcds-border-radius-sm);
+    overflow-x: auto;
+    
+    code {
+      font-family: monospace;
+      white-space: pre-wrap;
+    }
+  }
+}
+
+/* Enhance visibility for the View Code buttons */
+.demo-code gcds-details {
+  display: block;
+  width: 100%;
+  
+  /* Style the summary element (View Code button) */
+  ::part(summary) {
+    display: inline-block;
+    padding: var(--gcds-spacing-300) var(--gcds-spacing-400);
+    background-color: var(--gcds-bg-gray-100);
+    color: var(--gcds-text-primary);
+    font-weight: 500;
+    border-radius: var(--gcds-border-radius-sm);
+    cursor: pointer;
+    margin: var(--gcds-spacing-300);
+    position: relative;
+    border: 1px solid var(--gcds-border-default);
+    
+    /* Add a visual indicator */
+    &::after {
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-right: 2px solid currentColor;
+      border-bottom: 2px solid currentColor;
+      transform: rotate(45deg);
+      margin-left: var(--gcds-spacing-200);
+      transition: transform 0.2s ease;
+      vertical-align: middle;
+    }
+    
+    /* Flip the arrow when open */
+    &[aria-expanded="true"]::after {
+      transform: rotate(-135deg);
+    }
+    
+    /* Hover state */
+    &:hover {
+      background-color: var(--gcds-bg-gray-200);
+    }
+    
+    /* Focus state */
+    &:focus {
+      outline: 2px solid var(--gcds-focus-outline);
+      outline-offset: 2px;
+    }
+  }
+  
+  /* Fallback for when gcds-details' shadow parts are not accessible */
+  summary {
+    display: inline-block;
+    padding: var(--gcds-spacing-300) var(--gcds-spacing-400);
+    background-color: var(--gcds-bg-gray-100);
+    color: var(--gcds-text-primary);
+    font-weight: 500;
+    border-radius: var(--gcds-border-radius-sm);
+    cursor: pointer;
+    margin: var(--gcds-spacing-300);
+    position: relative;
+    border: 1px solid var(--gcds-border-default);
+    
+    &:hover {
+      background-color: var(--gcds-bg-gray-200);
+    }
+    
+    &:focus {
+      outline: 2px solid var(--gcds-focus-outline);
+      outline-offset: 2px;
+    }
+  }
+}
+
+/* Demo example details element styling */
+.demo-example details {
+  width: 100%;
+  border: 1px solid var(--gcds-border-default);
+  border-radius: var(--gcds-border-radius-md);
+  margin-bottom: var(--gcds-spacing-400);
+  
+  summary {
+    padding: var(--gcds-spacing-400);
+    font-weight: 600;
+    cursor: pointer;
+    background-color: var(--gcds-color-gray-50);
+    border-bottom: 1px solid transparent;
+    
+    &:hover {
+      background-color: var(--gcds-color-gray-100);
+    }
+    
+    &:focus {
+      outline: 2px solid var(--gcds-focus-outline);
+      outline-offset: 2px;
+    }
+  }
+  
+  &[open] summary {
+    border-bottom-color: var(--gcds-border-default);
+  }
+  
+  > *:not(summary) {
+    padding: var(--gcds-spacing-400);
+  }
+} 

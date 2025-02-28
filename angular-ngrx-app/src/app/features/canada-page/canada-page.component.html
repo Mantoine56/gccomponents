@@ -1,0 +1,110 @@
+<div class="canada-page">
+  <!-- Skip links -->
+  <gcds-skip-links>
+    <gcds-skip-link href="#main-content">Skip to main content</gcds-skip-link>
+    <gcds-skip-link href="#footer-links">Skip to footer</gcds-skip-link>
+  </gcds-skip-links>
+
+  <!-- Header -->
+  <gcds-header
+    lang-href="#"
+    skip-to-href="#main-content"
+    lang-code="en"
+    signature-variant="colour">
+    <gcds-search slot="search" action="#" placeholder="Search Canada.ca"></gcds-search>
+  </gcds-header>
+
+  <!-- Container for main content -->
+  <gcds-container>
+    <!-- Breadcrumbs -->
+    <gcds-breadcrumbs>
+      <gcds-breadcrumb href="https://www.canada.ca/en.html">Canada.ca</gcds-breadcrumb>
+      <gcds-breadcrumb>Angular NgRx Demo</gcds-breadcrumb>
+    </gcds-breadcrumbs>
+
+    <!-- Main content -->
+    <main id="main-content">
+      <gcds-heading tag="h1">Welcome to the Angular NgRx Demo</gcds-heading>
+      
+      <section>
+        <gcds-text>
+          <p>This is a demo page that follows the Government of Canada's design system standards and guidelines. It showcases how to integrate GCDS components within an Angular application.</p>
+        </gcds-text>
+        
+        <div class="info-box">
+          <h3>Important Information</h3>
+          <gcds-text>
+            <p>This is a demonstration of a typical information box found on Canada.ca pages. These are used to highlight important notices, warnings, or supplementary information for users.</p>
+          </gcds-text>
+        </div>
+      </section>
+      
+      <section>
+        <gcds-heading tag="h2">Features</gcds-heading>
+        <ul>
+          <li>
+            <gcds-text>Responsive design that adapts to various screen sizes</gcds-text>
+          </li>
+          <li>
+            <gcds-text>Accessibility compliant meeting WCAG 2.1 AA standards</gcds-text>
+          </li>
+          <li>
+            <gcds-text>Bilingual support with French and English versions</gcds-text>
+          </li>
+          <li>
+            <gcds-text>Government of Canada branding and design elements</gcds-text>
+          </li>
+          <li>
+            <gcds-text>Integration with GCDS (Government of Canada Design System) components</gcds-text>
+          </li>
+        </ul>
+      </section>
+      
+      <section>
+        <gcds-heading tag="h2">Todo Application</gcds-heading>
+        <gcds-text>
+          <p>Click the button below to navigate to our Todo application built with NgRx. The Todo app demonstrates state management using the NgRx library while maintaining the Government of Canada design guidelines.</p>
+        </gcds-text>
+        
+        <gcds-button type="button" button-role="primary" routerLink="/">Go to Todo App</gcds-button>
+      </section>
+      
+      <section>
+        <gcds-heading tag="h2">Interactive Questionnaire</gcds-heading>
+        <gcds-text>
+          <p>Try our step-by-step questionnaire wizard to see how we can implement multi-step forms following Canada.ca design patterns. This interactive tool demonstrates best practices for collecting information from users.</p>
+        </gcds-text>
+        
+        <div class="info-box">
+          <h3>About the Questionnaire</h3>
+          <gcds-text>
+            <p>This questionnaire demonstrates:</p>
+            <ul>
+              <li>Multi-step form navigation</li>
+              <li>Accessible form controls</li>
+              <li>Error handling</li>
+              <li>Progress indication</li>
+            </ul>
+          </gcds-text>
+        </div>
+        
+        <gcds-button type="button" button-role="secondary" routerLink="/questionnaire">Start Questionnaire</gcds-button>
+      </section>
+      
+      <div class="document-info">
+        <gcds-text>
+          <p>Date modified: {{ currentDate | date:'longDate' }}</p>
+          <p>Version: 1.0.0</p>
+        </gcds-text>
+      </div>
+    </main>
+  </gcds-container>
+
+  <!-- Footer -->
+  <gcds-footer id="footer-links" 
+    lang-href="#" 
+    terms-href="https://www.canada.ca/en/transparency/terms.html" 
+    privacy-href="https://www.canada.ca/en/transparency/privacy.html" 
+    canada-href="https://www.canada.ca/en.html">
+  </gcds-footer>
+</div>

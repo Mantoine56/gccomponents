@@ -1,0 +1,50 @@
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  
+  .app-nav {
+    background-color: #26374a; // GCDS blue
+    color: white;
+    padding: 1rem 0;
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+    
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      
+      h1 {
+        margin: 0;
+        font-size: 1.5rem;
+      }
+    }
+    
+    .app-links {
+      display: flex;
+      justify-content: flex-end;
+      gap: 1rem;
+      
+      a {
+        color: white;
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        &.active {
+          background-color: rgba(255, 255, 255, 0.3);
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
