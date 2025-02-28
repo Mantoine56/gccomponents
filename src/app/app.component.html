@@ -1,0 +1,21 @@
+<div class="app-container">
+  <!-- Top navigation for app-specific routes -->
+  <div class="app-nav">
+    <gcds-container>
+      <gcds-grid columns="2">
+        <gcds-grid-cell>
+          <gcds-heading tag="h1">{{ title }}</gcds-heading>
+        </gcds-grid-cell>
+        <gcds-grid-cell>
+          <gcds-nav alignment="right">
+            <gcds-nav-link href="/" [active]="true">Todo App</gcds-nav-link>
+            <gcds-nav-link href="/canada">Canada.ca Style</gcds-nav-link>
+          </gcds-nav>
+        </gcds-grid-cell>
+      </gcds-grid>
+    </gcds-container>
+  </div>
+  
+  <!-- Router outlet for page content -->
+  <router-outlet></router-outlet>
+</div> 

@@ -1,0 +1,21 @@
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  
+  .app-nav {
+    background-color: #26374a; // GCDS blue
+    color: white;
+    padding: 1rem 0;
+    
+    gcds-heading {
+      margin: 0;
+      color: white;
+    }
+    
+    gcds-nav {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+} 

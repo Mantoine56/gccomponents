@@ -1,0 +1,42 @@
+// Minimal styling for the Canada page using GCDS components
+// The components come with their own styling
+
+.canada-page {
+  // Add some spacing
+  .gcds-container {
+    padding: 2rem 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  // Add spacing between sections
+  gcds-heading {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+  
+  // Add spacing after text blocks
+  gcds-text {
+    display: block;
+    margin-bottom: 1rem;
+  }
+  
+  // Add spacing for the grid used as a list
+  gcds-grid[tag="ul"] {
+    margin-bottom: 2rem;
+    
+    gcds-grid-cell {
+      margin-bottom: 0.5rem;
+    }
+  }
+  
+  // Add spacing before the button
+  gcds-button {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+  }
+} 

@@ -1,0 +1,65 @@
+<div class="canada-page">
+  <!-- Skip links -->
+  <gcds-skip-links>
+    <gcds-skip-link href="#main-content">Skip to main content</gcds-skip-link>
+    <gcds-skip-link href="#footer-links">Skip to footer</gcds-skip-link>
+  </gcds-skip-links>
+
+  <!-- Header -->
+  <gcds-header lang-href="#" skip-to-href="#main-content">
+    <gcds-search slot="search" action="#" placeholder="Search Canada.ca"></gcds-search>
+  </gcds-header>
+
+  <!-- Container for main content -->
+  <div class="gcds-container">
+    <!-- Breadcrumbs -->
+    <gcds-breadcrumbs>
+      <gcds-breadcrumb href="https://www.canada.ca/en.html">Canada.ca</gcds-breadcrumb>
+      <gcds-breadcrumb>Angular NgRx Demo</gcds-breadcrumb>
+    </gcds-breadcrumbs>
+
+    <!-- Main content -->
+    <main id="main-content">
+      <gcds-grid tag="section" columns="1">
+        <gcds-grid-cell>
+          <gcds-heading tag="h1">Welcome to the Angular NgRx Demo</gcds-heading>
+          
+          <gcds-text>
+            This page demonstrates the use of the Government of Canada Design System (GCDS) components.
+          </gcds-text>
+          
+          <gcds-heading tag="h2">Features</gcds-heading>
+          <gcds-grid tag="ul" columns="1">
+            <gcds-grid-cell tag="li">
+              <gcds-text>Official Government of Canada Design System components</gcds-text>
+            </gcds-grid-cell>
+            <gcds-grid-cell tag="li">
+              <gcds-text>Accessibility compliant</gcds-text>
+            </gcds-grid-cell>
+            <gcds-grid-cell tag="li">
+              <gcds-text>Bilingual support</gcds-text>
+            </gcds-grid-cell>
+            <gcds-grid-cell tag="li">
+              <gcds-text>Responsive design</gcds-text>
+            </gcds-grid-cell>
+          </gcds-grid>
+          
+          <gcds-heading tag="h2">Todo Application</gcds-heading>
+          <gcds-text>
+            Click the button below to navigate to our Todo application built with NgRx.
+          </gcds-text>
+          
+          <gcds-button type="button" routerLink="/">Go to Todo App</gcds-button>
+        </gcds-grid-cell>
+      </gcds-grid>
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <gcds-footer id="footer-links" 
+    lang-href="#" 
+    terms-href="#" 
+    privacy-href="#" 
+    canada-href="https://www.canada.ca/en.html">
+  </gcds-footer>
+</div> 
